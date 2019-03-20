@@ -213,6 +213,7 @@
     <Compile Include="Configuration\AppSettingProvider.cs" />
     <Compile Include="Editions\EditionManager.cs" />
     <Compile Include="Features\FeatureValueStore.cs" />
+    <Compile Include="FirstContext\EntityForFirstDB.cs" />
     <Compile Include="MultiTenancy\Tenant.cs" />
     <Compile Include="MultiTenancy\TenantManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -222,6 +223,7 @@
     <Compile Include="Authorization\Users\User.cs" />
     <Compile Include="Authorization\Users\UserManager.cs" />
     <Compile Include="Authorization\Users\UserStore.cs" />
+    <Compile Include="SecondContext\EntityForSecondDB.cs" />
     <Compile Include="Validation\ValidationHelper.cs" />
   </ItemGroup>
   <ItemGroup>

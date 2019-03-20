@@ -217,9 +217,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\AbpSecondContext.cs" />
     <Compile Include="EntityFramework\AbpProjectNameDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\AbpProjectNameRepositoryBase.cs" />
     <Compile Include="AbpProjectNameDataModule.cs" />
+    <Compile Include="MigrationsOfSecond\201903201226511_SecondDbContext.cs" />
+    <Compile Include="MigrationsOfSecond\201903201226511_SecondDbContext.Designer.cs">
+      <DependentUpon>201903201226511_SecondDbContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsOfSecond\AbpSecondDbMigrator.cs" />
+    <Compile Include="MigrationsOfSecond\Configuration.cs" />
     <Compile Include="Migrations\201809270654064_InitialMigrations.cs" />
     <Compile Include="Migrations\201809270654064_InitialMigrations.Designer.cs">
       <DependentUpon>201809270654064_InitialMigrations.cs</DependentUpon>
@@ -235,6 +242,10 @@
     <Compile Include="Migrations\201902080730036_Upgrade_ABP_To_4_2_0.cs" />
     <Compile Include="Migrations\201902080730036_Upgrade_ABP_To_4_2_0.Designer.cs">
       <DependentUpon>201902080730036_Upgrade_ABP_To_4_2_0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903201226017_FirstDbContext.cs" />
+    <Compile Include="Migrations\201903201226017_FirstDbContext.Designer.cs">
+      <DependentUpon>201903201226017_FirstDbContext.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -258,6 +269,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MigrationsOfSecond\201903201226511_SecondDbContext.resx">
+      <DependentUpon>201903201226511_SecondDbContext.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809270654064_InitialMigrations.resx">
       <DependentUpon>201809270654064_InitialMigrations.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902080730036_Upgrade_ABP_To_4_2_0.resx">
       <DependentUpon>201902080730036_Upgrade_ABP_To_4_2_0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903201226017_FirstDbContext.resx">
+      <DependentUpon>201903201226017_FirstDbContext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

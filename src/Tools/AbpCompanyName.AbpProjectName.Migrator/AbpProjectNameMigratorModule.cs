@@ -11,6 +11,7 @@ namespace AbpCompanyName.AbpProjectName.Migrator
         public override void PreInitialize()
         {
             Database.SetInitializer<AbpProjectNameDbContext>(null);
+            Database.SetInitializer<AbpSecondContext>(null);
 
             Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
         }

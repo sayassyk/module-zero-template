@@ -11,9 +11,10 @@ namespace AbpCompanyName.AbpProjectName
     {
         public override void PreInitialize()
         {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<AbpProjectNameDbContext>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AbpProjectNameDbContext, Migrations.Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AbpSecondContext, MigrationsOfSecond.Configuration>());
 
-            Configuration.DefaultNameOrConnectionString = "Default";
+            Configuration.DefaultNameOrConnectionString = "ABMEntities";
         }
 
         public override void Initialize()

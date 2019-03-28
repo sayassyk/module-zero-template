@@ -12,5 +12,7 @@ namespace AbpCompanyName.AbpProjectName.WebMpa.Models.Users
         public IReadOnlyList<RoleDto> Roles { get; set; }
 
         public List<EntityForFirstDBListDto> EntityForFirstDBList { get; set; }
+
+        public List<UserDto> UserList { get; set; }
     }
 }

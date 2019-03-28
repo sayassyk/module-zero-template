@@ -21,6 +21,9 @@ using System.Linq.Dynamic;
 using Abp.AutoMapper;
 using System.Collections.Generic;
 using AbpCompanyName.AbpProjectName.EntityModels;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
+using AbpCompanyName.AbpProjectName.Users.Dto;
 
 namespace AbpCompanyName.AbpProjectName.WebMpa.Controllers
 {
@@ -46,8 +49,8 @@ namespace AbpCompanyName.AbpProjectName.WebMpa.Controllers
             var eagerLoad = db.EntityForFirstDBs
                                 .Include(x => x.EntityChildList.Select(c => c.UserMaster))
                                 .Include(x => x.UserMaster)
-                                .MapTo<List<EntityForFirstDBListDto>>();
-
+                                .ProjectToList<EntityForFirstDBListDto>();
+            
             var model = new UserListViewModel
             {
                 Users = users,

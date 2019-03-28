@@ -46,7 +46,7 @@ namespace AbpCompanyName.AbpProjectName
                 cfg.CreateMap<EntityForFirstDB, EntityForFirstDBListDto>()
                         .ForMember(t => t.MasterCreatedUserName, op => op.MapFrom(u => u.UserMaster.Name ?? "Master User Not Found"))
                         .ForMember(t => t.MyChildProperty1, op => op.MapFrom(u => u.EntityChildList.FirstOrDefault() != null ? u.EntityChildList.FirstOrDefault().MyChildProperty1 : 0))
-                        .ForMember(t => t.ChildCreatedUserName, op => op.MapFrom(u => u.EntityChildList.FirstOrDefault() != null ? u.EntityChildList.FirstOrDefault().UserMaster.FullName : "Child User Not Found"));
+                        .ForMember(t => t.ChildCreatedUserName, op => op.MapFrom(u => u.EntityChildList.FirstOrDefault().UserMaster.Name != null ? u.EntityChildList.FirstOrDefault().UserMaster.Name : "Child User Not Found"));
             });
         }
     }

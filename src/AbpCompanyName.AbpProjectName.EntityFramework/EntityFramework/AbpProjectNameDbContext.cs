@@ -3,6 +3,7 @@ using System.Data.Entity;
 using Abp.Zero.EntityFramework;
 using AbpCompanyName.AbpProjectName.Authorization.Roles;
 using AbpCompanyName.AbpProjectName.Authorization.Users;
+using AbpCompanyName.AbpProjectName.FirstContext;
 using AbpCompanyName.AbpProjectName.MultiTenancy;
 using AbpCompanyName.AbpProjectName.SecondContext;
 
@@ -12,6 +13,7 @@ namespace AbpCompanyName.AbpProjectName.EntityFramework
     {
         //TODO: Define an IDbSet for your Entities...
         public virtual DbSet<EntityForFirstDB> EntityForFirstDBs { get; set; }
+        public virtual DbSet<EntityChild> EntityChilds { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.

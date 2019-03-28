@@ -7,6 +7,7 @@ using AbpCompanyName.AbpProjectName.Authorization;
 using AbpCompanyName.AbpProjectName.Authorization.Roles;
 using AbpCompanyName.AbpProjectName.Authorization.Users;
 using AbpCompanyName.AbpProjectName.EntityFramework;
+using AbpCompanyName.AbpProjectName.FirstContext;
 using Microsoft.AspNet.Identity;
 
 namespace AbpCompanyName.AbpProjectName.Migrations.SeedData
@@ -86,6 +87,31 @@ namespace AbpCompanyName.AbpProjectName.Migrations.SeedData
                 _context.SaveChanges();
 
                 _context.UserRoles.Add(new UserRole(null, adminUserForHost.Id, adminRoleForHost.Id));
+                _context.SaveChanges();
+            }
+
+            var checkData = _context.EntityForFirstDBs.FirstOrDefault();
+            if (checkData == null)
+            {
+                EntityForFirstDB dummyMaster = new EntityForFirstDB()
+                {
+                    MyProperty1 = 1,
+                    MyProperty2 = 2,
+                    CreatedBy = adminRoleForHost.Id
+                };
+
+                _context.EntityForFirstDBs.Add(dummyMaster);
+                _context.SaveChanges();
+
+                EntityChild dummyChilld = new EntityChild()
+                {
+                    MyChildProperty1 = 11,
+                    MyChildProperty2 = 22,
+                    CreatedBy = adminRoleForHost.Id,
+                    EntityMasterTableId = dummyMaster.Id
+                };
+
+                _context.EntityChilds.Add(dummyChilld);
                 _context.SaveChanges();
             }
         }

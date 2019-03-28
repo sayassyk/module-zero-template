@@ -83,18 +83,31 @@ namespace AbpCompanyName.AbpProjectName.Migrator
             Log.Write("CODEMASTER database migration started...");
             try
             {
-                // Dummy tenant mentioning the 2nd Db connection string
-                var dummyTenant = new Tenant
+                // Getting the CodeMaster tenant which mentioning the 2nd Db connection string
+                var codeMasterTenant = _tenantRepository.FirstOrDefault(t => t.TenancyName == "CodeMaster");
+
+                // If not, inserting a new tenant entity to db
+                if (codeMasterTenant == null)
                 {
-                    Id = 1,
-                    ConnectionString = ConfigurationManager.ConnectionStrings["CODEMASTEREntities"].ConnectionString,
-                    TenancyName = "CodeMaster",
-                    Name = "CodeMaster",
-                    IsActive = true
-                };
+                    Tenant dummyTenant = new Tenant
+                    {
+                        TenancyName = "CodeMaster",
+                        Name = "CodeMaster",
+                        ConnectionString = SimpleStringCipher.Instance.Encrypt(ConfigurationManager.ConnectionStrings["CODEMASTEREntities"].ConnectionString)
+                    };
+
+                    _tenantRepository.Insert(dummyTenant);
+                    codeMasterTenant = dummyTenant;
+                }
+
+                // Updating the encrypted connctionstring from webconfig. So that we can change the DB name from the webconfig itself.                
+                codeMasterTenant.ConnectionString = SimpleStringCipher.Instance.Encrypt(ConfigurationManager.ConnectionStrings["CODEMASTEREntities"].ConnectionString);
+
+                // The tenant will be queried again from deep inside the migrator. So that we have to update the change to the Tenant table in DB.
+                _tenantRepository.Update(codeMasterTenant);
 
                 // Passing it to the _codeMasterMigrator 
-                _codeMasterMigrator.CreateOrMigrateForTenant(dummyTenant);
+                _codeMasterMigrator.CreateOrMigrateForTenant(codeMasterTenant);
             }
 
             catch (Exception ex)

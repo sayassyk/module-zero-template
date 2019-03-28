@@ -62,6 +62,25 @@
                     <i class="material-icons">add</i>
                 </button>
             </div>
+            <ul>
+                @foreach (var item in Model.EntityForFirstDBList)
+                {
+                    <li> 
+                        <label>
+                            MasterProperty:  @item.MyProperty1
+                        </label> ||
+                        <label>
+                            MasterCreatedBy: @item.MasterCreatedUserName
+                        </label> ||
+                        <label>
+                            ChildProperty: @item.MyChildProperty1
+                        </label> ||
+                        <label>
+                            ChildCreatedby: @item.ChildCreatedUserName
+                        </label>
+                    </li>
+                }
+            </ul>
         </div>
     </div>
 </div>

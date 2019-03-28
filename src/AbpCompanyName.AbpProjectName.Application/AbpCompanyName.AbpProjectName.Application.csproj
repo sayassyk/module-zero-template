@@ -225,6 +225,7 @@
     <Compile Include="Configuration\IConfigurationAppService.cs" />
     <Compile Include="Configuration\Ui\UiThemeInfo.cs" />
     <Compile Include="Configuration\Ui\UiThemes.cs" />
+    <Compile Include="EntityModels\EntityForFirstDBListDto.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantDto.cs" />
     <Compile Include="MultiTenancy\Dto\EditTenantDto.cs" />
     <Compile Include="MultiTenancy\Dto\TenantDto.cs" />

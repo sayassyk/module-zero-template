@@ -7,8 +7,12 @@ using Abp.Domain.Repositories;
 using Abp.Modules;
 using AbpCompanyName.AbpProjectName.Authorization.Roles;
 using AbpCompanyName.AbpProjectName.Authorization.Users;
+using AbpCompanyName.AbpProjectName.EntityModels;
 using AbpCompanyName.AbpProjectName.Roles.Dto;
+using AbpCompanyName.AbpProjectName.SecondContext;
 using AbpCompanyName.AbpProjectName.Users.Dto;
+using System.Linq;
+using AbpCompanyName.AbpProjectName.FirstContext;
 
 namespace AbpCompanyName.AbpProjectName
 {
@@ -38,6 +42,11 @@ namespace AbpCompanyName.AbpProjectName
 
                 cfg.CreateMap<CreateUserDto, User>();
                 cfg.CreateMap<CreateUserDto, User>().ForMember(x => x.Roles, opt => opt.Ignore());
+
+                cfg.CreateMap<EntityForFirstDB, EntityForFirstDBListDto>()
+                        .ForMember(t => t.MasterCreatedUserName, op => op.MapFrom(u => u.UserMaster.Name ?? "Master User Not Found"))
+                        .ForMember(t => t.MyChildProperty1, op => op.MapFrom(u => u.EntityChildList.FirstOrDefault() != null ? u.EntityChildList.FirstOrDefault().MyChildProperty1 : 0))
+                        .ForMember(t => t.ChildCreatedUserName, op => op.MapFrom(u => u.EntityChildList.FirstOrDefault() != null ? u.EntityChildList.FirstOrDefault().UserMaster.FullName : "Child User Not Found"));
             });
         }
     }

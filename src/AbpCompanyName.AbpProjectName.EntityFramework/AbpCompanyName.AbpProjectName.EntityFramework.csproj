@@ -247,6 +247,10 @@
     <Compile Include="Migrations\201903201226017_FirstDbContext.Designer.cs">
       <DependentUpon>201903201226017_FirstDbContext.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903281038188_ChildTable.cs" />
+    <Compile Include="Migrations\201903281038188_ChildTable.Designer.cs">
+      <DependentUpon>201903281038188_ChildTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultEditionsCreator.cs" />
@@ -286,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903201226017_FirstDbContext.resx">
       <DependentUpon>201903201226017_FirstDbContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903281038188_ChildTable.resx">
+      <DependentUpon>201903281038188_ChildTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
